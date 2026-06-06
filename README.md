@@ -2,6 +2,8 @@
 
 A Node.js application for managing finances with PDF statement upload and transaction parsing functionality.
 
+Actual numbers are editted in the pictures below for confidentiality.
+
 <img width="1116" height="722" alt="Screenshot 2026-06-05 211116" src="https://github.com/user-attachments/assets/b8d8694f-75f8-47ef-a463-5b977100dd9d" />
 
 <img width="1404" height="912" alt="Screenshot 2026-06-05 210052" src="https://github.com/user-attachments/assets/0756374b-a2f9-4c49-8a2b-cf4c47384e10" />
