@@ -1,6 +1,14 @@
 # Finance Manager
 
 A Node.js application for managing finances with PDF statement upload and transaction parsing functionality.
+<img width="1116" height="722" alt="Screenshot 2026-06-05 211116" src="https://github.com/user-attachments/assets/b8d8694f-75f8-47ef-a463-5b977100dd9d" />
+
+<img width="1404" height="912" alt="Screenshot 2026-06-05 210052" src="https://github.com/user-attachments/assets/1babf5e1-c066-42cd-bdaf-c4ffb1d8e9f9" />
+
+<img width="1343" height="903" alt="Screenshot 2026-06-05 210649" src="https://github.com/user-attachments/assets/b676349a-26d1-4f92-aed4-e54adb1b21aa" />
+
+
+
 
 ## Features
 - Register using email password and login or login with google (used passport strategies and jwt token)
