@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Manager Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Dashboard Section -->
+    <div id="dashboardSection" class="container" style="display: none;">
+        <div class="header">
+            <h1>Finance Dashboard</h1>
+            <div class="user-info">
+                <span id="welcomeUser"></span>
+                <button id="insightsBtn" class="btn btn-insights" title="Show 3 months Finance trend">&#x1F4CA; Insights</button>
+                <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+            </div>
+        </div>
+
+        <!-- Upload Section -->
+        <div class="card">
+            <h2>Upload Bank Statement</h2>
+            <form id="uploadForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="month">Month</label>
+                        <select id="month" name="month" required>
+                            <option value="">Select Month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="year">Year</label>
+                        <select id="year" name="year" required>
+                            <option value="">Select Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pdfFile">Bank Statement (PDF)</label>
+                    <input type="file" id="pdfFile" name="pdfFile" accept=".pdf" required>
+                    <small>Maximum file size: 5MB</small>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Upload & Process</button>
+                    <button type="button" id="clearBtn" class="btn btn-secondary">Clear</button>
+                </div>
+            </form>
+            <div id="uploadStatus" class="status-message"></div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" style="display: none;">
+            <div class="summary-cards">
+                <div class="summary-card salary"><h3>Salary</h3><p class="amount" id="salaryAmount">₹0</p></div>
+                <div class="summary-card savings"><h3>Savings</h3><p class="amount" id="savingsAmount">₹0</p></div>
+                <div class="summary-card shopping"><h3>Shopping</h3><p class="amount" id="shoppingAmount">₹0</p></div>
+                <div class="summary-card bills"><h3>Bills</h3><p class="amount" id="billsAmount">₹0</p></div>
+                <div class="summary-card food-orders"><h3>Food Orders</h3><p class="amount" id="foodOrderAmount">₹0</p></div>
+                <div class="summary-card transfers"><h3>Transfers</h3><p class="amount" id="transfersAmount">₹0</p></div>
+                <div class="summary-card other"><h3>Other</h3><p class="amount" id="otherAmount">₹0</p></div>
+            </div>
+
+            <div class="chart-container">
+                <div class="card"><h2>Expense Distribution</h2><canvas id="pieChart"></canvas></div>
+                <div class="card"><h2>Category Breakdown</h2><canvas id="barChart"></canvas></div>
+            </div>
+
+            <!-- <div class="card">
+                <h2>Transaction Details</h2>
+                <div class="table-container">
+                    <table id="transactionsTable"><thead><tr><th>Date</th><th>Description</th><th>Amount</th><th>Balance</th><th>Type</th></tr></thead>
+                        <tbody id="transactionsBody"></tbody>
+                    </table>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- Insights Modal -->
+    <div id="insightsModal" class="insights-modal-overlay" style="display:none;">
+        <div class="insights-modal">
+            <div class="insights-modal-header">
+                <h2>&#x1F4CA; 3-Month Finance Insights</h2>
+                <button id="insightsCloseBtn" class="insights-close-btn" title="Close">&times;</button>
+            </div>
+            <div id="insightsModalBody" class="insights-modal-body">
+                <div id="insightsLoading" class="insights-loading">
+                    <div class="spinner"></div>
+                    <p>Analysing your spending trends&hellip;</p>
+                </div>
+                <div id="insightsContent" style="display:none;">
+                    <section class="insights-section">
+                        <h3>Overview</h3>
+                        <p id="insightsText"></p>
+                    </section>
+                    <section class="insights-section">
+                        <h3>Category Highlights</h3>
+                        <ul id="insightsCategoryList" class="insights-list"></ul>
+                    </section>
+                    <section class="insights-section">
+                        <h3>Savings Potential</h3>
+                        <p id="insightsSavingsSummary"></p>
+                    </section>
+                    <section class="insights-section">
+                        <h3>Actionable Suggestions</h3>
+                        <ol id="insightsSuggestionsList" class="insights-list"></ol>
+                    </section>
+                </div>
+                <div id="insightsError" class="insights-error" style="display:none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Processing your statement...</p>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
